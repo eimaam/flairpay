@@ -1,0 +1,15 @@
+{
+  "name": "flairpay",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,css,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.0.4"
+  },
+  "packageManager": "pnpm@11.1.2"
+}
