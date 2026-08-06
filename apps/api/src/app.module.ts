@@ -4,9 +4,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TransformInterceptor } from './shared/interceptors/transform.interceptor';
 import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
+import { UsersModule } from './modules/users/users.module';
+import { AppConfigModule } from './core/config';
 
 @Module({
-  imports: [],
+  imports: [AppConfigModule, UsersModule],
   controllers: [AppController],
   providers: [
     AppService,
@@ -20,5 +22,5 @@ import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
     },
   ],
 })
-export class AppModule {}
+export class AppModule { }
 
