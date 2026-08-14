@@ -6,9 +6,11 @@ import { TransformInterceptor } from './shared/interceptors/transform.intercepto
 import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 import { UsersModule } from './modules/users/users.module';
 import { AppConfigModule } from './core/config';
+import { AppLoggerModule } from './core/logger/logger.module';
+
 
 @Module({
-  imports: [AppConfigModule, UsersModule],
+  imports: [AppConfigModule, UsersModule, AppLoggerModule],
   controllers: [AppController],
   providers: [
     AppService,
@@ -19,7 +21,7 @@ import { AppConfigModule } from './core/config';
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
-    },
+    },  
   ],
 })
 export class AppModule { }
