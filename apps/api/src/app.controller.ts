@@ -10,6 +10,7 @@ interface HealthResponseDto {
     status: 'healthy' | 'unhealthy';
     timestamp: string;
     db: DbHealthDto;
+    redis: { healthy: boolean }
   };
 }
 

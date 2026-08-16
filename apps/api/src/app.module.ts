@@ -7,12 +7,14 @@ import { HttpExceptionFilter } from './shared/filters/http-exception.filter';
 import { CoreModule } from './core/core.module';
 import { RequestIdMiddleware } from './core/logger/middleware/request-id.middleware';
 import { DatabaseModule } from './core/database';
+import { RedisModule } from './core/redis/redis.module';
 
 
 @Module({
   imports: [
     CoreModule,
-    DatabaseModule
+    DatabaseModule,
+    RedisModule
   ],
   controllers: [AppController],
   providers: [
