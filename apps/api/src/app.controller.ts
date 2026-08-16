@@ -1,9 +1,23 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { DbHealthDto } from './core/database/database.service';
+
+interface HealthResponseDto {
+  success: boolean;
+  message: string;
+  data: {
+    service: string;
+    status: 'healthy' | 'unhealthy';
+    timestamp: string;
+    db: DbHealthDto;
+  };
+}
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(
+    private readonly appService: AppService
+  ) { }
 
   @Get()
   getHello(): string {
@@ -11,20 +25,8 @@ export class AppController {
   }
 
   @Get('/health')
-  getHealth(): {
-    success: boolean; message: string; timestamp: string, data: {
-      service: string,
-      status: string
-    }
-  } {
-    return {
-      success: true,
-      message: 'API is running...',
-      timestamp: new Date().toISOString(),
-      data: {
-        service: 'FlairPay API',
-        status: 'operational',
-      },
-    };
+  async getHealth(): Promise<HealthResponseDto> {
+    const result: HealthResponseDto = await this.appService.getHealth()
+    return result
   }
 }

@@ -2,6 +2,7 @@ import { Params } from 'nestjs-pino';
 import { NodeEnvEnum } from '../config';
 
 export const loggerConfig: Params = {
+  forRoutes: ['*path'],
   pinoHttp: {
     level: process.env.NODE_ENV === NodeEnvEnum.PRODUCTION
       ? 'info'
