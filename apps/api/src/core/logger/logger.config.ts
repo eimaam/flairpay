@@ -1,5 +1,5 @@
 import { Params } from 'nestjs-pino';
-import { NodeEnvEnum } from '../config';
+import { NodeEnvEnum } from '../config/config.service';
 
 export const loggerConfig: Params = {
   forRoutes: ['*path'],
